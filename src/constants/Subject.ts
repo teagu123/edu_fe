@@ -19,7 +19,7 @@ export const subjectList = [
 		subject: ['영어Ⅰ', '영어Ⅱ', '영어회화', '영어독해와 작문'],
 	},
 	{
-		curriculum: '사탐(사회)',
+		curriculum: '사탐',
 		subject: [
 			'통합사회',
 			'생활과 윤리',
@@ -34,7 +34,7 @@ export const subjectList = [
 		],
 	},
 	{
-		curriculum: '과탐(과학)',
+		curriculum: '과탐',
 		subject: [
 			'통합과학',
 			'과학탐구실험',
