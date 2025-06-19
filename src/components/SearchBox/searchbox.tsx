@@ -1,16 +1,30 @@
+'use client';
+
 import { useState } from 'react'
 import SelectBox from '../SelectBox/selectBox'
 import { curriculumList, majorList, subjectList } from '@/constants'
 
-export default function SearchBox() {
+
+type Props = {
+	onSearch: (params: {
+	  curriculum?: string;
+	  subject?: string;
+	  major?: string;
+	  keyword: string;
+	}) => void;
+  };
+
+export default function SearchBox({ onSearch }: Props) {
 	const [curriculum, setCurriculum] = useState<undefined | string>(undefined)
 	const [subject, setSubject] = useState<undefined | string>(undefined)
 	const [major, setMajor] = useState<undefined | string>(undefined)
 	const [keyword, setKeyword] = useState<string>('')
 
+
 	const onSearchKeyword = () => {
 		const length = keyword.trim().length
 		if (length === 0) return
+		onSearch({ curriculum, subject, major, keyword });
 	}
 
 	return (
