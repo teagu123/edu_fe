@@ -3,24 +3,13 @@
 import SkeletonSearchBox from '@/components/LoadingUI/skeletonSearchBox'
 import SearchBox from '@/components/SearchBox/searchbox'
 import SearchCard from '@/components/SearchCard/searchCard'
+import { SearchQueryParams, fetchSearchResults } from '@/lib/fetchSearchResults'
 import { ResearchTopic } from '@/types/searchData'
 import { useQuery } from '@tanstack/react-query'
-import { SearchParams } from 'next/dist/server/request/search-params'
 import { useEffect, useState } from 'react'
 
-const fetchSearchResults = async (params: SearchParams) => {
-	const { keyword } = params
-	const apiUrl = process.env.NEXT_PUBLIC_API_URL
-
-	const res = await fetch(`${apiUrl}search?keyword=${keyword}`)
-
-	if (!res.ok) throw new Error('검색 실패')
-
-	return res.json()
-}
-
 export default function Home() {
-	const [params, setParams] = useState<SearchParams>({ keyword: '' })
+	const [params, setParams] = useState<SearchQueryParams>({ keyword: '' })
 	const [searchList, setSearchList] = useState<[] | ResearchTopic[]>([])
 
 	const { data, isLoading, isError } = useQuery({
