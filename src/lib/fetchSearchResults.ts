@@ -13,7 +13,7 @@ export const fetchSearchResults = async (params: SearchQueryParams) => {
 	query.append('keyword', keyword)
 
 	if (curriculum) query.append('curriculum', curriculum)
-	if (subject) query.append('subject', subject)
+	if (subject && major) query.append('subject', subject)
 	if (major) query.append('major', major)
 
 	const url = `${apiUrl}search?${query.toString()}`
