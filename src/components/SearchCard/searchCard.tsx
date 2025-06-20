@@ -1,14 +1,17 @@
 import { ResearchTopic } from '@/types/searchData'
+import Image from 'next/image'
 
 export default function SearchCard({ data }: { data: ResearchTopic }) {
 	const keywordArray = data?.keywords.split(',').map((k: string) => k.trim())
 
 	return (
 		<div className="flex rounded-lg p-4 bg-white w-5/6 border-1 border-gray-200">
-			<img
+			<Image
 				src="/images/sample.svg"
 				alt="샘플 이미지"
-				className="w-[137px] h-[137px] rounded-md mr-[25px]"
+				width={137}
+				height={137}
+				className="rounded-md mr-[25px] w-[137px] h-[137px] object-cover"
 			/>
 
 			<div className="text-[15px]">

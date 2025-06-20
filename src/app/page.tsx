@@ -12,7 +12,7 @@ export default function Home() {
 	const [params, setParams] = useState<SearchQueryParams>({ keyword: '' })
 	const [searchList, setSearchList] = useState<[] | ResearchTopic[]>([])
 
-	const { data, isLoading, isError } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['search', params],
 		queryFn: () => fetchSearchResults(params),
 		enabled: !!params.keyword,
@@ -38,7 +38,7 @@ export default function Home() {
 						<div className="text-xl">검색 결과가 없습니다.</div>
 					) : (
 						<>
-							{searchList?.map((el: any) => (
+							{searchList?.map((el: ResearchTopic) => (
 								<SearchCard data={el} key={el.title} />
 							))}
 						</>
